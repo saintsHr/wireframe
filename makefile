@@ -9,11 +9,11 @@ all:
 
 	@for f in $(src); do \
 		echo "[Compiling]: $$f"; \
-		gcc -c $$f -o build/$$(basename $$f .c).o $(include); \
+		gcc -c $$f $(include) -o build/$$(basename $$f .c).o; \
 	done
 
 	echo "[Linking]: bin/wireframe"
-	gcc build/*.o -o bin/wireframe
+	gcc build/*.o -lncurses -o bin/wireframe
 
 	@echo
 	@echo "Done!"
