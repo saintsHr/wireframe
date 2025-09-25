@@ -48,7 +48,7 @@ void wfrFrameSync(unsigned int fps){
 
 static wfrVec2 wfrCenter;
 
-static int wfrCompare(const void *a, const void *b) {
+int wfrCompare(const void *a, const void *b) {
     const wfrVec2 *p1 = a;
     const wfrVec2 *p2 = b;
 
@@ -59,8 +59,11 @@ static int wfrCompare(const void *a, const void *b) {
 }
 
 void wfrOrderPoints(wfrVec2 pts[4]) {
-    wfrCenter.x = (pts[0].x + pts[1].x + pts[2].x + pts[3].x) / 4.0f;
-    wfrCenter.y = (pts[0].y + pts[1].y + pts[2].y + pts[3].y) / 4.0f;
+    float cx = ((float)pts[0].x + pts[1].x + pts[2].x + pts[3].x) / 4.0f;
+    float cy = ((float)pts[0].y + pts[1].y + pts[2].y + pts[3].y) / 4.0f;
+
+    wfrCenter.x = (unsigned short)(cx + 0.5f);
+    wfrCenter.y = (unsigned short)(cy + 0.5f);
 
     qsort(pts, 4, sizeof(wfrVec2), wfrCompare);
 }

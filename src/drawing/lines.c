@@ -11,7 +11,7 @@ void wfrDrawLine(wfrVec2 p1, wfrVec2 p2) {
     int dx = abs(x2 - x1);
     int dy = abs(y2 - y1);
 
-    int steep = dy > dx;
+    unsigned short steep = dy > dx;
     if (steep) {
         int tmp;
         tmp = x1; x1 = y1; y1 = tmp;
@@ -24,14 +24,14 @@ void wfrDrawLine(wfrVec2 p1, wfrVec2 p2) {
     int y = y1;
 
     wfrVec2* points = malloc(sizeof(wfrVec2));
-    int size = 0;
+    unsigned short size = 0;
 
-    points[size].x = steep ? y : x;
-    points[size].y = steep ? x : y;
+    points[size].x = (unsigned short)(steep ? y : x);
+    points[size].y = (unsigned short)(steep ? x : y);
     size++;
 
-    int x_inc = (x2 > x1) ? 1 : -1;
-    int y_inc = (y2 > y1) ? 1 : -1;
+    short x_inc = (x2 > x1) ? 1 : -1;
+    short y_inc = (y2 > y1) ? 1 : -1;
 
     for (int i = 0; i < dx; i++) {
         if (p < 0) {
@@ -44,8 +44,8 @@ void wfrDrawLine(wfrVec2 p1, wfrVec2 p2) {
 
         size++;
         points = realloc(points, size * sizeof(wfrVec2));
-        points[size - 1].x = steep ? y : x;
-        points[size - 1].y = steep ? x : y;
+        points[size - 1].x = (unsigned short)(steep ? y : x);
+        points[size - 1].y = (unsigned short)(steep ? x : y);
     }
 
     for (int i = 0; i < size; i++) {
