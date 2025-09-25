@@ -1,5 +1,7 @@
 #pragma once
 
+#include "internal/colors.h"
+
 typedef struct{
     unsigned short x;
     unsigned short y;

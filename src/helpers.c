@@ -8,6 +8,7 @@
 
 void wfrInit(){
     initscr();
+    start_color();
     cbreak();
     noecho();
     curs_set(0);

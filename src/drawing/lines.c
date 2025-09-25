@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
-void wfrDrawLine(wfrVec2 p1, wfrVec2 p2) {
+void wfrDrawLine(wfrVec2 p1, wfrVec2 p2, wfrColor color) {
     int x1 = p1.x;
     int y1 = p1.y;
     int x2 = p2.x;
@@ -48,9 +48,13 @@ void wfrDrawLine(wfrVec2 p1, wfrVec2 p2) {
         points[size - 1].y = (unsigned short)(steep ? x : y);
     }
 
+    init_pair(1, color, COLOR_BLACK);
+    attron(COLOR_PAIR(1));
     for (int i = 0; i < size; i++) {
         mvaddstr(points[i].y, points[i].x, "#");
     }
+    attroff(COLOR_PAIR(1));
+    
     refresh();
 
     free(points);
