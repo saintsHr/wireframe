@@ -5,7 +5,7 @@ include := -Iinclude
 all:
 	@echo
 
-	@mkdir -p build bin
+	@mkdir -p build lib
 
 	@for f in $(src); do \
 		echo "[Compiling]: $$f"; \
