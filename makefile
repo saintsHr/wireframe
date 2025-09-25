@@ -12,8 +12,9 @@ all:
 		gcc -c $$f $(include) -o build/$$(basename $$f .c).o; \
 	done
 
-	echo "[Linking]: bin/wireframe"
-	gcc build/*.o -lncurses -o bin/wireframe
+	@echo
+	echo "[Linking]: lib/libwireframe.a"
+	ar rcs lib/libwireframe.a -lncurses build/*.o
 
 	@echo
 	@echo "Done!"
