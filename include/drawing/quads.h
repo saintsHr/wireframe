@@ -2,5 +2,6 @@
 
 #include <ncurses.h>
 #include "internal/vectors.h"
+#include "internal/objects.h"
 
-void wfrDrawQuads(wfrVec2 p1, wfrVec2 p2, wfrVec2 p3, wfrVec2 p4, wfrColor color);
+void wfrDrawQuads(wfrQuad qd, wfrColor color);

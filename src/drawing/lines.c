@@ -1,8 +1,16 @@
 #include "drawing/lines.h"
+
 #include <stdlib.h>
 #include <ncurses.h>
 
-void wfrDrawLine(wfrVec2 p1, wfrVec2 p2, wfrColor color) {
+void wfrDrawLine(wfrLine lin, wfrColor color) {
+    static unsigned long long id = 1;
+    id++;
+    if (id >= COLOR_PAIRS) id = 1;
+
+    wfrVec2 p1 = lin.p[0];
+    wfrVec2 p2 = lin.p[1];
+
     int x1 = p1.x;
     int y1 = p1.y;
     int x2 = p2.x;
@@ -48,12 +56,12 @@ void wfrDrawLine(wfrVec2 p1, wfrVec2 p2, wfrColor color) {
         points[size - 1].y = (unsigned short)(steep ? x : y);
     }
 
-    init_pair(1, color, COLOR_BLACK);
-    attron(COLOR_PAIR(1));
+    init_pair(id, color, COLOR_BLACK);
+    attron(COLOR_PAIR(id));
     for (int i = 0; i < size; i++) {
         mvaddstr(points[i].y, points[i].x, "#");
     }
-    attroff(COLOR_PAIR(1));
+    attroff(COLOR_PAIR(id));
     
     refresh();
 
