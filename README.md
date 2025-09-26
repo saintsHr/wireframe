@@ -19,3 +19,7 @@
 - Open the folder and run the command: ```make```  **(if not a release)**
 - Move the folder to your preference path
 - While compiling, make sure to use those flags:<br>```-Ipath/to/folder/include -Lpath/to/folder/lib -lwireframe```
+
+### 🪛 Use Examples:
+
+![Placeholder](assets/triangles.png)
