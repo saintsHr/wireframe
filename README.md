@@ -11,6 +11,8 @@
 - Framerate Limitation
 - Anti Flickering
 - Lines Rendering
+- Triangles Rendering
+- Color System
 - ... More
 
 ### 🔧 How to Install & Use:
